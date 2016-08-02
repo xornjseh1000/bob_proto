@@ -4,7 +4,7 @@
 <!doctype html>
 <html lang="en">
 
-<body style="background-color: white; color: black;" topmargin="center">
+<body style="background-color: white; color: black;">
 	<form action="socar/member/login.jsp" method="post">
 		<div class="box">
 

@@ -12,7 +12,7 @@
 			<col width="80%">
 		</colgroup>
 		<table summary="">
-			<h1>1:1문의하기</h1>
+			<h1>1:1문의하기....TEST</h1>
 			<br />
 			<tr>
 				<td>문의분류</td>
@@ -50,8 +50,8 @@
 			</tr>
 			<tr>
 				<td colspan="2"><div align="center">
-						<input type="submit" value="등록"> <input type="button"
-							value="뒤로">
+						<input type="submit" value="등록"> <a href="customermain.jsp"><input type="button"
+							value="뒤로"></a>
 					</div></td>
 			</tr>
 		</table>
