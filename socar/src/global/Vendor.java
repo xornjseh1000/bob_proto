@@ -1,5 +1,5 @@
 package global;
 
 public enum Vendor {
-	ORACLE //fffff
+	ORACLE //ffffff
 }
