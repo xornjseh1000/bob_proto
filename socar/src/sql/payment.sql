@@ -1,4 +1,4 @@
-create sequence pay_seq start with 1000 increment by 1 cycle;
+create sequence pay_seq start with 1 increment by 1;
 
 create table payment(
 	pay_seq int primary key,

@@ -1,4 +1,4 @@
-create sequence book_seq start with 1000 increment by 1 cycle;
+create sequence book_seq start with 1 increment by 1 ;
 create table booking(
 
 	book_seq int primary key,
