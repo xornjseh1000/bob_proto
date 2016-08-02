@@ -31,16 +31,17 @@ public class CustomerDAO {
 
 	public int insert(CustomerBean customer) {	// 1대1문의하기 전송
 		int result = 0;
-		String sql = "insert into socar_customer (customer_seq, val, title, content, file_name, reg_date) "
-				+ "values (customer_seq.nextval, ?, ?, ?, ?, ?)";
+//		MemberService service = MemberServiceImpl.getSession();
+		String sql = "insert into customer (cust_seq, title, content, file_name, reg_date, id) "
+				+ "values (cust_seq.nextval, ?, ?, ?, ?, ?)";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, customer.getValue());
-			pstmt.setString(2, customer.getTitle());
-			pstmt.setString(3, customer.getContent());
-			pstmt.setString(4, customer.getFileName());
-			pstmt.setString(5, customer.getRegDate());
+			pstmt.setString(1, customer.getTitle());
+			pstmt.setString(2, customer.getContent());
+			pstmt.setString(3, customer.getFileName());
+			pstmt.setString(4, customer.getRegDate());
+//			pstmt.setString(5, service.getSession.getId());	//member의 세션에서 getId()가 필요함
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

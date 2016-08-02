@@ -18,8 +18,17 @@ public class CarServiceImpl implements CarService {
 		dao.insert(car);
 	}
 
+//	@Override
+//	public List<CarBean> list() {
+//		return dao.list();
+//	}
+
 	@Override
-	public List<CarBean> list() {
+	public List<CarBean> findBy(String model) {
+		return dao.findBy(model);
+	}
+	
+	public List<CarBean> list(){
 		return dao.list();
 	}
 }

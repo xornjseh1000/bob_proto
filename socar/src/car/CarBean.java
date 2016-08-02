@@ -1,7 +1,7 @@
 package car;
 
 public class CarBean {
-	private String zone, model, payKm, oil, option;
+	private String zone, model, payKm, oil, option, img;
 
 	public String getZone() {
 		return zone;
@@ -41,6 +41,14 @@ public class CarBean {
 
 	public void setOption(String option) {
 		this.option = option;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	@Override

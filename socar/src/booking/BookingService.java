@@ -6,6 +6,7 @@ import car.CarBean;
 
 public interface BookingService {
 	public List<CarBean> socarSearch();
+	public CarBean findByModel(String model);
 	public List<CarBean> findBySearch(String model);
-	public void reserve(CarBean car);
+	public void reserve(String model);
 }

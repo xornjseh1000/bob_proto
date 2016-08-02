@@ -31,16 +31,17 @@ public class CarDAO {
 	
 	public int insert(CarBean car){
 		int result = 0;
-		String sql = "insert into car(car_seq, car_zone, model, pay_km, oil, car_option)"
-				+ "values(car_seq.nextval, ?, ?, ?, ?, ?)"; 
+		String sql = "insert into car(car_seq, car_image, car_zone, car_model, pay_km, car_oil, car_option)"
+				+ "values(car_seq.nextval, ?, ?, ?, ?, ?, ?)"; 
 		
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, car.getZone());
-			pstmt.setString(2, car.getModel());
-			pstmt.setString(3, car.getPayKm());
-			pstmt.setString(4, car.getOil());
-			pstmt.setString(5, car.getOption());
+			pstmt.setString(1, car.getImg());
+			pstmt.setString(2, car.getZone());
+			pstmt.setString(3, car.getModel());
+			pstmt.setString(4, car.getPayKm());
+			pstmt.setString(5, car.getOil());
+			pstmt.setString(6, car.getOption());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -51,7 +52,7 @@ public class CarDAO {
 
 	public List<CarBean> list() {
 		List<CarBean> list = new ArrayList<CarBean>();
-		String sql = "select * from car" + "";
+		String sql = "select * from car";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -60,9 +61,9 @@ public class CarDAO {
 			while(rs.next()){
 				CarBean temp = new CarBean();
 				temp.setZone(rs.getString("CAR_ZONE"));
-				temp.setModel(rs.getString("MODEL"));
+				temp.setModel(rs.getString("CAR_MODEL"));
 				temp.setPayKm(rs.getString("PAY_KM"));
-				temp.setOil(rs.getString("OIL"));
+				temp.setOil(rs.getString("CAR_OIL"));
 				temp.setOption(rs.getString("CAR_OPTION"));
 				list.add(temp);
 			}
@@ -75,8 +76,26 @@ public class CarDAO {
 
 	public List<CarBean> findBy(String model) {
 		List<CarBean> list = new ArrayList<CarBean>();
-		String sql = "select * from car where model = " + model;
-		
+		String sql = "select * from car where car_model = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, model);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				CarBean temp = new CarBean();
+				temp.setZone(rs.getString("CAR_ZONE"));
+				temp.setModel(rs.getString("CAR_MODEL"));
+				temp.setPayKm(rs.getString("PAY_KM"));
+				temp.setOil(rs.getString("CAR_OIL"));
+				temp.setOption(rs.getString("CAR_OPTION"));
+				temp.setImg(rs.getString("CAR_IMAGE"));
+				list.add(temp);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return list;
 	}
 }

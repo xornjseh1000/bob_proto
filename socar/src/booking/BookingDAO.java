@@ -30,15 +30,28 @@ public class BookingDAO {
 			Constants.USER_PW).getConnection();
 	}
 
-	public List<CarBean> findBy(BookingBean booking) {
-		List<CarBean> list = new ArrayList<CarBean>();
-		return list;
-	}
-
-	public int insertHistory(CarBean car) {  
-		int result = 0;
-		String sql = "insert into history (hist_seq, rent_date, rent_zone, car_model, pay_km) "
-				+ "values (hist_seq.nextval, ?, ?, ?, ?)"; 	//id 후에 추가...
-		return result;
+	public CarBean findByModel(String model) {
+		CarBean car = null;
+		String sql = "select * from car where car_model = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, model);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				car = new CarBean();
+				car.setImg(rs.getString("CAR_IMAGE"));
+				car.setModel(rs.getString("CAR_MODEL"));
+				car.setOil(rs.getString("CAR_OIL"));
+				car.setOption(rs.getString("CAR_OPTION"));
+				car.setPayKm(rs.getString("PAY_KM"));
+				car.setZone(rs.getString("CAR_ZONE"));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return car;
 	}
 }
