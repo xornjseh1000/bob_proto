@@ -2,6 +2,17 @@ package car;
 
 public class CarBean {
 	private String zone, model, payKm, oil, option, img;
+	private int seq;
+	
+	
+
+	public int getSeq() {
+		return seq;
+	}
+
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
 
 	public String getZone() {
 		return zone;
@@ -53,7 +64,7 @@ public class CarBean {
 
 	@Override
 	public String toString() {
-		return "CarBean [zone=" + zone + ", model=" + model + ", payKm=" + payKm + ", oil=" + oil + ", option=" + option
-				+ "]";
+		return "seq=" + seq + ", zone=" + zone + ", model=" + model + ", payKm=" + payKm + ", oil=" + oil + ", option=" + option
+				+ ", img=" + img + "\n";
 	}
 }

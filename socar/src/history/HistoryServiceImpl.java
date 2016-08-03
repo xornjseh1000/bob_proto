@@ -16,12 +16,13 @@ public class HistoryServiceImpl implements HistoryService {
 	}
 
 	@Override
-	public void addReserve(CarBean car) {
-		dao.insert(car);
+	public void addReserve(CarBean car, int rentTime) {
+		int price = Integer.parseInt(car.getPayKm()) * rentTime;
+		dao.insert(car, price);
 	}
 
 	@Override
-	public List<HistoryBean> list() {
+	public List<HistoryBean> list() {	//member의 session이 필요
 		return dao.list();
 	}
 }

@@ -15,3 +15,4 @@ create table member(
 
 select * from member;
 
+select * from tab;

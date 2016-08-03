@@ -60,6 +60,8 @@ public class CarDAO {
 			
 			while(rs.next()){
 				CarBean temp = new CarBean();
+				temp.setSeq(rs.getInt("CAR_SEQ"));
+				temp.setImg(rs.getString("CAR_IMAGE"));
 				temp.setZone(rs.getString("CAR_ZONE"));
 				temp.setModel(rs.getString("CAR_MODEL"));
 				temp.setPayKm(rs.getString("PAY_KM"));
@@ -84,6 +86,7 @@ public class CarDAO {
 			
 			while(rs.next()) {
 				CarBean temp = new CarBean();
+				temp.setSeq(rs.getInt("CAR_SEQ"));
 				temp.setZone(rs.getString("CAR_ZONE"));
 				temp.setModel(rs.getString("CAR_MODEL"));
 				temp.setPayKm(rs.getString("PAY_KM"));
@@ -97,5 +100,30 @@ public class CarDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	public CarBean findBySeq(int seq) {
+		CarBean car = null;
+		String sql = "select * from car where car_seq = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, seq);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				car = new CarBean();
+				car.setSeq(rs.getInt("CAR_SEQ"));
+				car.setZone(rs.getString("CAR_ZONE"));
+				car.setModel(rs.getString("CAR_MODEL"));
+				car.setPayKm(rs.getString("PAY_KM"));
+				car.setOil(rs.getString("CAR_OIL"));
+				car.setOption(rs.getString("CAR_OPTION"));
+				car.setImg(rs.getString("CAR_IMAGE"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return car;
 	}
 }

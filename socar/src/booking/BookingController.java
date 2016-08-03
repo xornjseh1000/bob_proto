@@ -18,8 +18,9 @@ public class BookingController {
 				JOptionPane.showMessageDialog(null, service.findBySearch(JOptionPane.showInputDialog("검색할 차량 이름")));
 				break;
 				
-			case "3" : 
-				service.reserve(JOptionPane.showInputDialog("예약할 차량 이름"));
+			case "3" :
+				service.reserve(Integer.parseInt(JOptionPane.showInputDialog("대여할 차량 SEQ")), 
+						Integer.parseInt(JOptionPane.showInputDialog("대여 시간")));
 				break;
 				
 			default:

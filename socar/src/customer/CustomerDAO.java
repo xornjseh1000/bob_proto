@@ -33,7 +33,7 @@ public class CustomerDAO {
 		int result = 0;
 //		MemberService service = MemberServiceImpl.getSession();
 		String sql = "insert into customer (cust_seq, title, content, file_name, reg_date, id) "
-				+ "values (cust_seq.nextval, ?, ?, ?, ?, ?)";
+				+ "values (cust_seq.nextval, ?, ?, ?, ?, 'socar')";
 		
 		try {
 			pstmt = con.prepareStatement(sql);

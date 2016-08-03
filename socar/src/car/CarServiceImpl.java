@@ -31,4 +31,9 @@ public class CarServiceImpl implements CarService {
 	public List<CarBean> list(){
 		return dao.list();
 	}
+
+	@Override
+	public CarBean findBySeq(int seq) {
+		return dao.findBySeq(seq);
+	}
 }

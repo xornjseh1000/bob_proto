@@ -31,17 +31,16 @@ public class HistoryDAO {
 				Constants.USER_PW).getConnection();
 	}
 	
-	public int insert(CarBean car) {
+	public int insert(CarBean car, int price) {
 		int result = 0;
 		String sql = "insert into history (hist_seq, rent_date, rent_zone, car_model, pay_km, car_image, id)"
-				+ "values (hist_seq.nextval, ?, ?, ?, ?, ?)";
-		
+				+ "values (hist_seq.nextval, ?, ?, ?, ?, ?, ?)";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis())));
 			pstmt.setString(2, car.getZone());
 			pstmt.setString(3, car.getModel());
-			pstmt.setString(4, car.getPayKm());
+			pstmt.setInt(4, price);
 			pstmt.setString(5, car.getImg());
 			pstmt.setString(6, "socar");
 			result = pstmt.executeUpdate();
@@ -53,7 +52,7 @@ public class HistoryDAO {
 	}
 	
 	public List<HistoryBean> list(){
-		String sql = "select * from history";
+		String sql = "select * from history where id = 'a'";	//member의 세션이 필요
 		List<HistoryBean> list = new ArrayList<HistoryBean>();
 		
 		try {

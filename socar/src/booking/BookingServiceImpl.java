@@ -22,7 +22,7 @@ public class BookingServiceImpl implements BookingService{
 	BookingDAO dao = BookingDAO.getInstance();
 	
 	@Override
-	public List<CarBean> socarSearch() {	//차종에서 전체 차종이면 car DB에 들어있는 모든 차량을 불러옴
+	public List<CarBean> socarSearch() {	// car DB에 들어있는 모든 차량을 불러옴
 		return carService.list();
 	}
 
@@ -31,14 +31,14 @@ public class BookingServiceImpl implements BookingService{
 		return carService.findBy(model);
 	}
 	
+	public CarBean findBySeq(int seq){	//차량의 시퀀스를 입력하면 해당 차량을 불러옴
+		return carService.findBySeq(seq);
+	}
+	
 	@Override
-	public void reserve(String model) {
+	public void reserve(int seq, int rentTime) {
 		HistoryService hService = HistoryServiceImpl.getInstance();
-		hService.addReserve(this.findByModel(model));
+		hService.addReserve(this.findBySeq(seq), rentTime);
 	}
 
-	@Override
-	public CarBean findByModel(String model) {
-		return dao.findByModel(model);
-	}
 }
