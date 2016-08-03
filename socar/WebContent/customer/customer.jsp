@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<% String ctx = application.getContextPath(); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<jsp:include page="/global/navi.jsp"/>
 <body>
-
-	<form name="BoardWriteForm" method="post"
-		action="Board_Write_action.jsp" onsubmit="return boardWriteCheck();">
-
 		<colgroup>
 			<col width="20%">
 			<col width="80%">
@@ -29,13 +27,10 @@
 				<option value="">쏘파라치</option>
 				<option value="">기타</option>
 			</select>
-
 			<tr>
 				<td>제목/내용</td>
 				<td><input type=text name=email size=50></td>
 			</tr>
-
-
 			<tr>
 				<td>내 용</td>
 				<td><textarea name=content rows="10" cols="100"></textarea></td>
@@ -55,8 +50,6 @@
 					</div></td>
 			</tr>
 		</table>
-	</form>
-	</table>
-
-</body>
+	</body>
+	<jsp:include page="/global/footer.jsp"/>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<% String ctx = application.getContextPath(); %>
 <!doctype html>
 <html lang="en">
 <style>
@@ -27,14 +28,15 @@ li a:hover {
 	background-color: #111111;
 }
 </style>
+<jsp:include page="/global/navi.jsp"/>
 <body>
 	<h1>고  객  센  터 </h1>
 	<ul>
-		<li><a href="customerfaq.jsp">자주묻는질문</a></li>
-		<li><a href="customer.jsp">1:1문의</a></li>
-		<li><a href="customer1.jsp">가입문의</a></li>
-		<li><a href="customer2.jsp">차량이용/사고</a></li>
-        	<li><a href="customer0.jsp">예약/결제문의</a></li>
+		<li><a href="<%=ctx %>/customer/customerfaq.jsp">자주묻는질문</a></li>
+		<li><a href="<%=ctx %>/customer/customer.jsp">1:1문의</a></li>
+		<li><a href="<%=ctx %>/customer/customer1.jsp">가입문의</a></li>
+		<li><a href="<%=ctx %>/customer/customer2.jsp">차량이용/사고</a></li>
+        	<li><a href="<%=ctx %>/customer/customer0.jsp">예약/결제문의</a></li>
 	</ul>
 	<table>
 		<tr>
@@ -74,4 +76,5 @@ li a:hover {
 
 
 </body>
+<jsp:include page="/global/footer.jsp"/>
 </html>l>>
